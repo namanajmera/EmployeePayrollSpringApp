@@ -1,6 +1,7 @@
 package com.naman.employeepayrollapp.service;
 
 import com.naman.employeepayrollapp.dto.EmployeePayrollDTO;
+import com.naman.employeepayrollapp.exception.EmployeePayrollException;
 import com.naman.employeepayrollapp.model.EmployeePayrollData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,10 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 
     @Override
     public EmployeePayrollData getEmployeePayrollDataById(int empId) {
-        return employeePayrollDataList.get(empId-1);
+        return employeePayrollDataList.stream()
+                .filter(employeePayrollData -> employeePayrollData.getEmpId() == empId)
+                .findFirst()
+                .orElseThrow(()-> new EmployeePayrollException("Employee Not Found"));
     }
 
     @Override

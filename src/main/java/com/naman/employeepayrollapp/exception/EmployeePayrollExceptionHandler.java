@@ -1,5 +1,6 @@
 package com.naman.employeepayrollapp.exception;
 
+import com.naman.employeepayrollapp.dto.EmployeePayrollDTO;
 import com.naman.employeepayrollapp.dto.ResponseDTO;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -20,5 +21,11 @@ public class EmployeePayrollExceptionHandler {
         List<String> errMsg=errorsList.stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.toList());
         ResponseDTO responseDTO=new ResponseDTO("Exception while Processing REST Request",errMsg);
         return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EmployeePayrollException.class)
+    public ResponseEntity<ResponseDTO> handleEmployeePayrollException(EmployeePayrollException exception){
+        ResponseDTO responseDTO=new ResponseDTO("Exception while processing REST Request",exception.getMessage());
+        return new ResponseEntity<>(responseDTO,HttpStatus.BAD_REQUEST);
     }
 }

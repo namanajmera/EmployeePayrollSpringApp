@@ -2,6 +2,7 @@ package com.naman.employeepayrollapp.model;
 
 import com.naman.employeepayrollapp.dto.EmployeePayrollDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class EmployeePayrollData {
@@ -9,7 +10,7 @@ public class EmployeePayrollData {
     private String name;
     private long salary;
     public String gender;
-    public String startDate;
+    public LocalDate startDate;
     public String note;
     public String profilePic;
     public List<String> departments;

@@ -13,6 +13,8 @@ public interface IEmployeePayrollService {
 
     List<EmployeePayrollData> getEmployeesByDepartment(String department);
 
+    List<EmployeePayrollData> getEmployeePayrollByKeywordName(String keyword);
+
     EmployeePayrollData createEmployeePayrollData(EmployeePayrollDTO employeePayrollDTO);
 
     EmployeePayrollData updateEmployeePayrollData(int empId,EmployeePayrollDTO employeePayrollDTO);

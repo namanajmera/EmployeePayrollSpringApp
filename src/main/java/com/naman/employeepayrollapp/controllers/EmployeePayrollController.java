@@ -43,6 +43,14 @@ public class EmployeePayrollController {
         return new ResponseEntity<>(responseDTO,HttpStatus.OK);
     }
 
+//    Search By Keyword Name
+    @GetMapping("get/search/{keyword}")
+    public ResponseEntity<ResponseDTO> getEmployeeDataByKeywordName(@PathVariable("keyword") String keyword){
+        List<EmployeePayrollData> employeePayrollDataList=iEmployeePayrollService.getEmployeePayrollByKeywordName(keyword);
+        ResponseDTO responseDTO=new ResponseDTO("Get Call Success",employeePayrollDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+
     //    Post Call
     @PostMapping("/post/create")
     public ResponseEntity<ResponseDTO> addEmployeePayrollData(@Valid @RequestBody EmployeePayrollDTO employeePayrollDTO) {

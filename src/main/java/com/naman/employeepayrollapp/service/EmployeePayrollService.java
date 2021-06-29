@@ -36,6 +36,11 @@ public class EmployeePayrollService implements IEmployeePayrollService {
     }
 
     @Override
+    public List<EmployeePayrollData> getEmployeePayrollByKeywordName(String keyword) {
+        return employeePayrollRepository.getEmployeePayrollDataByKeywordName(keyword);
+    }
+
+    @Override
     public EmployeePayrollData createEmployeePayrollData(EmployeePayrollDTO employeePayrollDTO) {
         EmployeePayrollData employeePayrollData = new EmployeePayrollData(employeePayrollDTO);
         log.info("EmpData: " + employeePayrollData.toString());
